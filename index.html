@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfólio de Marcos Vinícius Pessoa, desenvolvedor Full Stack em formação.">
+<title>Marcos Vinícius Pessoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: coluna única de leitura com ficha lateral no topo; seções separadas por filete e rótulo mono.
+   Paleta: roxo forte como cor principal, rosa pink nos destaques, neutros lavanda. */
+:root {
+  --bg: #FBF7FF;
+  --surface: #FFFFFF;
+  --fg: #1E0B33;
+  --muted: #6A5683;
+  --line: #E6D6F5;
+  --accent: #7B1FD6;
+  --accent-ink: #FFFFFF;
+  --pink: #E0229B;
+  --hl: #F9C6E8;
+  color-scheme: light;
+  --grad: linear-gradient(100deg, #7B1FD6, #D6168F);
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12061F; --surface: #1D0D31; --fg: #F6EBFF; --muted: #B9A3D1;
+    --line: #36204F; --accent: #C58BFF; --accent-ink: #1A0830; --pink: #FF5CC0;
+    --hl: rgba(255, 92, 192, 0.35); --grad: linear-gradient(100deg, #C58BFF, #FF5CC0);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12061F; --surface: #1D0D31; --fg: #F6EBFF; --muted: #B9A3D1;
+  --line: #36204F; --accent: #C58BFF; --accent-ink: #1A0830; --pink: #FF5CC0;
+  --hl: rgba(255, 92, 192, 0.35); --grad: linear-gradient(100deg, #C58BFF, #FF5CC0);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 20px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 880px; margin-inline: auto; }
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* topo */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; color: var(--fg); }
+.brand span { color: var(--pink); }
+.nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.nav a { font-size: 0.92rem; color: var(--muted); text-decoration: none; padding-block: 4px; }
+.nav a:hover { color: var(--accent); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; padding-block: 56px 48px; align-items: start; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 3.9rem); font-weight: 700; letter-spacing: -0.02em; margin-top: 14px; }
+.hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; margin-top: 20px; }
+.hero .lead strong { color: var(--fg); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-block; font-weight: 600; font-size: 0.95rem; padding: 11px 20px; border-radius: 6px; text-decoration: none; border: 1.5px solid var(--accent); }
+.btn.primary { background: var(--grad); color: var(--accent-ink); border-color: transparent; }
+.hl { background: linear-gradient(transparent 58%, var(--hl) 58%); padding-inline: 2px; }
+.hero h1::after { content: ""; display: block; width: 84px; height: 6px; border-radius: 3px; background: var(--grad); margin-top: 18px; }
+section > .label.mono { color: var(--accent); font-weight: 500; }
+aside.ficha { border-top: 4px solid var(--pink); }
+article.project { border-top: 4px solid var(--accent); }
+article.mini { border-top: 3px solid var(--pink); }
+.btn.ghost { color: var(--accent); background: transparent; }
+.btn:hover { filter: brightness(1.08); }
+
+.ficha { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; min-width: 0; }
+.ficha dl { margin: 14px 0 0; display: grid; gap: 14px; }
+.ficha dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.ficha dd { margin: 2px 0 0; font-weight: 500; overflow-wrap: anywhere; }
+
+/* seções */
+section { padding-block: 40px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px 40px; }
+section > .label { padding-top: 6px; }
+section h2 { font-size: clamp(1.5rem, 4vw, 1.9rem); font-weight: 600; margin-bottom: 16px; }
+.body { min-width: 0; }
+.body p + p { margin-top: 14px; }
+.body p { max-width: 62ch; }
+
+/* projeto */
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 26px; }
+.project-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.project h3 { font-size: 1.6rem; font-weight: 700; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 4px var(--hl); }
+.project p.desc { margin-top: 14px; }
+.feat { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.feat li { position: relative; padding-left: 20px; font-size: 0.95rem; }
+.feat li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 10px; height: 3px; border-radius: 2px; background: var(--pink); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.tag { font-family: var(--font-mono); font-size: 0.78rem; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--fg); background: var(--bg); }
+.next { margin-top: 16px; border: 1.5px dashed var(--line); border-radius: 10px; padding: 20px 26px; color: var(--muted); }
+
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; font-size: 0.92rem; font-weight: 600; }
+.minis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px; margin-top: 16px; }
+.mini { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.mini h3 { font-size: 1.15rem; font-weight: 600; }
+.mini p { font-size: 0.93rem; color: var(--muted); }
+.mini .tags { margin-top: 4px; }
+.mini .links { margin-top: auto; padding-top: 10px; }
+
+/* habilidades */
+.skills { display: grid; gap: 18px; }
+.skills h3 { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+/* trajetória */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 4px 20px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.timeline li:first-child { padding-top: 0; }
+.timeline li:last-child { border-bottom: 0; padding-bottom: 0; }
+.timeline .when { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); padding-top: 3px; }
+.timeline .what { font-weight: 600; }
+.timeline .where { color: var(--muted); font-size: 0.95rem; }
+
+/* contato */
+.contact { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.contact div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+.contact div:last-child { border-bottom: 0; }
+.contact .k { font-weight: 600; }
+.contact .v { color: var(--muted); font-family: var(--font-mono); font-size: 0.85rem; }
+
+footer { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (max-width: 720px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 36px 32px; }
+  section { grid-template-columns: minmax(0, 1fr); gap: 4px; padding-block: 32px; }
+  .feat { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); }
+  .project { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#inicio">Marcos<span>.</span>Pessoa</a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="inicio">
+    <div>
+      <p class="mono">Portfólio · 2026</p>
+      <h1>Marcos Vinícius Pessoa</h1>
+      <p class="lead"><strong class="hl">Desenvolvedor Full Stack em formação.</strong> Aprendo construindo. Já publiquei pequenos projetos na web e agora monto o VaiDeBike, um app para deixar o ciclista mais seguro nas ruas da cidade.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projetos">Ver projetos</a>
+        <a class="btn ghost" href="https://wa.me/5585996998261?text=Ol%C3%A1%2C%20Marcos!%20Vi%20seu%20portf%C3%B3lio%20e%20queria%20conversar." target="_blank" rel="noopener">Falar comigo</a>
+      </div>
+    </div>
+    <aside class="ficha" aria-label="Resumo">
+      <p class="mono">Resumo</p>
+      <dl>
+        <div><dt>Estudando</dt><dd>Full Stack · Geração Tech</dd></div>
+        <div><dt>Trabalhando</dt><dd>Aprendiz de Produção · TBM</dd></div>
+        <div><dt>Construindo</dt><dd>VaiDeBike, app web de segurança para ciclistas</dd></div>
+        <div><dt>Tecnologias</dt><dd>HTML, CSS, JavaScript, TypeScript, React</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <section id="sobre">
+    <p class="label mono">Sobre</p>
+    <div class="body">
+      <h2>Quem sou eu</h2>
+      <p>Concluí o Ensino Médio em 2021. Desde dezembro de 2025 trabalho como Aprendiz de Produção na TBM, e antes passei pela Fimm Brazil como Aprendiz Operacional.</p>
+      <p>Hoje faço a formação de Desenvolvedor Full Stack na Geração Tech. Estou colocando em prática o que aprendo no VaiDeBike, um projeto pensado a partir de um problema real de quem pedala na cidade.</p>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <p class="label mono">Projetos</p>
+    <div class="body">
+      <h2>O que já construí</h2>
+      <article class="project">
+        <div class="project-head">
+          <h3>VaiDeBike</h3>
+          <span class="status">Em desenvolvimento</span>
+        </div>
+        <p class="desc">Um GPS em tempo real para ciclistas. O app avisa sobre perigos no caminho e sugere um percurso mais rápido e seguro até o destino. O conceito e 7 telas já estão prontos, e a base do código já está publicada.</p>
+        <ul class="feat">
+          <li>Alerta de obras inacabadas e buracos</li>
+          <li>Aviso de ruas sem sinalização</li>
+          <li>Mapa de ciclovias e ciclofaixas</li>
+          <li>Rota mais rápida e rota mais segura</li>
+          <li>Cadastro e login de usuários</li>
+          <li>Emblemas e selos por missões cumpridas</li>
+        </ul>
+        <div class="tags" aria-label="Tecnologias do projeto">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">MongoDB</span>
+        </div>
+        <div class="links">
+          <a href="https://app-vuf8.vercel.app" target="_blank" rel="noopener">Ver online</a>
+          <a href="https://github.com/archvini/app" target="_blank" rel="noopener">Código no GitHub</a>
+        </div>
+      </article>
+
+      <div class="minis">
+        <article class="mini">
+          <h3>FocusFlow</h3>
+          <p>Gerenciador de tarefas publicado na web.</p>
+          <div class="links">
+            <a href="https://focusflow-task-manager-lac.vercel.app" target="_blank" rel="noopener">Ver online</a>
+            <a href="https://github.com/archvini/focusflow-task-manager" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+        <article class="mini">
+          <h3>Gerador de senhas</h3>
+          <p>Página que gera senhas aleatórias.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <div class="links">
+            <a href="https://gerador-senhas-aleatorias.vercel.app" target="_blank" rel="noopener">Ver online</a>
+            <a href="https://github.com/archvini/gerador-senhas-aleatorias" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+        <article class="mini">
+          <h3>Carta de namoro</h3>
+          <p>Carta com fotos de gatinhos, pétalas animadas e um botão "Não" que reage ao mouse.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <div class="links">
+            <a href="https://carta-de-namoro-mu.vercel.app" target="_blank" rel="noopener">Ver online</a>
+            <a href="https://github.com/archvini/cart-o-de-namoro" target="_blank" rel="noopener">Código</a>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:20px"><a href="https://github.com/archvini" target="_blank" rel="noopener">Ver todos os repositórios no GitHub</a></p>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <p class="label mono">Habilidades</p>
+    <div class="body">
+      <h2>Com o que eu trabalho</h2>
+      <div class="skills">
+        <div>
+          <h3>Front-end</h3>
+          <div class="tags" style="margin-top:0"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Tailwind CSS</span></div>
+        </div>
+        <div>
+          <h3>Back-end e banco de dados</h3>
+          <div class="tags" style="margin-top:0"><span class="tag">Node.js</span><span class="tag">PHP</span><span class="tag">Python (FastAPI)</span><span class="tag">MySQL</span><span class="tag">MongoDB</span></div>
+        </div>
+        <div>
+          <h3>Design</h3>
+          <div class="tags" style="margin-top:0"><span class="tag">Figma</span></div>
+        </div>
+        <div>
+          <h3>Ferramentas</h3>
+          <div class="tags" style="margin-top:0"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vercel</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trajetoria">
+    <p class="label mono">Trajetória</p>
+    <div class="body">
+      <h2>Trabalho e estudos</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">Dez/2025 – hoje</span>
+          <div><p class="what">Aprendiz de Produção</p><p class="where">TBM</p></div>
+        </li>
+        <li>
+          <span class="when">Em andamento</span>
+          <div><p class="what">Desenvolvedor Full Stack</p><p class="where">Geração Tech · formação</p></div>
+        </li>
+        <li>
+          <span class="when">Jan – Nov/2025</span>
+          <div><p class="what">Aprendiz Operacional</p><p class="where">Fimm Brazil</p></div>
+        </li>
+        <li>
+          <span class="when">2021</span>
+          <div><p class="what">Ensino Médio completo</p><p class="where">Conclusão</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contato">
+    <p class="label mono">Contato</p>
+    <div class="body">
+      <h2>Vamos conversar</h2>
+      <div class="contact">
+        <div><span class="k">E-mail</span><a class="v" href="mailto:marcosviniciuspessoa5@gmail.com">marcosviniciuspessoa5@gmail.com</a></div>
+        <div><span class="k">GitHub</span><a class="v" href="https://github.com/archvini" target="_blank" rel="noopener">github.com/archvini</a></div>
+        <div><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/viniciusdevfllstk" target="_blank" rel="noopener">linkedin.com/in/viniciusdevfllstk</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="mono">Marcos Vinícius da Silva Pessoa</span>
+    <span class="mono">2026</span>
+  </footer>
+</div>
+</body>
+</html>
